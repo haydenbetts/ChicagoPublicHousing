@@ -1,0 +1,3 @@
+- Figure out how to set up this gemfile properly
+- e.g. I will need dependencies like nokogiri, rspec
+- should set up a rake console that loads in my environment
