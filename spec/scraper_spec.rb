@@ -10,9 +10,22 @@ describe "#get_page" do
   end
 end
 
-  # the next test I want to run is on whether we are initializing name
-  # properly
+## maybe test get_array_of_housing_rows to see if it actually returns
+## the array of nokogiri_objects I am interested in?
+## this one also takes a long time to run?
+describe "#get_array_of_housing_rows" do
+  it "returns an array of nokogiri_objects, this first of which
+     contains the text: ABLA / Brooks Homes" do
+     scraper = ChicagoPublicHousing::Scraper.new
 
+     housing_array = scraper.get_array_of_housing_rows
+     expect(housing_array[0].css("a").text).to eq("ABLA / Brooks Homes")
+  end
+end
+
+
+  ## TODO currently return nil
+  ## TODO his text take a long time to run...
   describe "#make_housing" do
     it "makes the first entry in the @@all class var in the ChicagoPublicHousing::Housing
        class have the name we expect " do
