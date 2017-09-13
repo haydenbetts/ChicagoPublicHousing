@@ -48,7 +48,6 @@ class ChicagoPublicHousing::CLI
   end
 
   def print_housing(housing)
-
-    end
   end
+  
 end
