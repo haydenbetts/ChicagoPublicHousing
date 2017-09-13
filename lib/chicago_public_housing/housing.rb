@@ -8,13 +8,18 @@ class ChicagoPublicHousing::Housing
   # we initialize with only basic attributes
   # we give default values of nil because dealing w someone elses data and
   # don't want our whole program to break if something wrong happens
-  def initialize(name=nil, address=nil, community=nil, property_type=nil, url=nil, wait_list_status=nil )
+  def initialize(name=nil)
     @name = name
-    @address = address
-    @community = community
-    @property_type = property_type
-    @url = url
-    @wait_list_status = wait_list_status
+    #@address = address
+    #@community = community
+    #@property_type = property_type
+    #@url = url
+    #@wait_list_status = wait_list_status
+    @@all << self
+  end
+
+  def self.all
+    @@all
   end
 
   def self.new_from_nokogiri_object(nokogiri_object)
