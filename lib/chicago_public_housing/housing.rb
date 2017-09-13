@@ -16,4 +16,19 @@ class ChicagoPublicHousing::Housing
     @url = url
     @wait_list_status = wait_list_status
   end
+
+  def self.new_from_nokogiri_object(nokogiri_object)
+    self.new(
+      nokogiri_object.css("a").text
+      )
+  end
+
+  # TODO do I need a doc function?
+#  def doc
+    # TODO currently only getting one array object
+#    @doc ||= ChicagoPublicHousing::Scraper.get_array_of_housing_rows[0]
+#  end
+
+
+
 end

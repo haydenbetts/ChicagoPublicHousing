@@ -6,14 +6,14 @@ class ChicagoPublicHousing::Scraper
 
   # here is the url
 
-  def get_page
-    Nokogiri::HTML(open("http://www.thecha.org/residents/public-housing/find-public-housing/"))
+  def self.get_page(url="http://www.thecha.org/residents/public-housing/find-public-housing/")
+    Nokogiri::HTML(open(url))
   end
 
   # this should return an array of html elements that each have basic info
   # on chicago public housing
 
-  def get_array_of_housing_rows
+  def self.get_array_of_housing_rows
 
     # something is wrong with the syntax here
     #housing = get_page.xpath("//@class['list-view-desc']")
@@ -23,6 +23,9 @@ class ChicagoPublicHousing::Scraper
 
   # calls ChicagoPublicHousing::Housing.new_from_index_page(r)
   def make_housing
+    self.class.get_array_of_housing_rows.each do |r|
+      ChicagoPublicHousing::Housing.new_from_nokogiri_object(r)
+    end
   end
 
 end
